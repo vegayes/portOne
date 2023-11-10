@@ -1,0 +1,19 @@
+package order.api.project.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/")
+public class Success {
+
+	goods_pay_success
+	
+	public String success( ) {
+		
+		
+		
+	}
+
+
+}

@@ -1,0 +1,5 @@
+package order.api.project.model.dto;
+
+public class Payment {
+
+}

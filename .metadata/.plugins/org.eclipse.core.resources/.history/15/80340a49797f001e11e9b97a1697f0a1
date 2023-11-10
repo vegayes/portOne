@@ -1,0 +1,23 @@
+package order.api.project.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class PaymentController {
+	
+    private final IamportClient iamportClient;
+
+    public PaymentController() {
+        this.iamportClient = new IamportClient("REST_API_KEY",
+                "REST_API_SECRET");
+    }
+
+    @ResponseBody
+    @RequestMapping("/verify/{imp_uid}")
+    public IamportResponse<Payment> paymentByImpUid(@PathVariable("imp_uid") String imp_uid)
+            throws IamportResponseException, IOException {
+        
+	
+	
+
+}

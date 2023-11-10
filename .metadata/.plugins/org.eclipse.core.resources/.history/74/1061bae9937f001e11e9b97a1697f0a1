@@ -1,0 +1,5 @@
+package order.api.project.controller;
+
+public class Success {
+
+}

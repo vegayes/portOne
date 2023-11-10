@@ -19,6 +19,10 @@ configurations {
 
 repositories {
 	mavenCentral()
+	
+	
+	maven { url 'https://jitpack.io' }
+	
 }
 
 dependencies {
@@ -28,6 +32,14 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	// gson
+	implementation 'com.google.code.gson:gson:2.8.7'
+	implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
+	
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+	
 }
 
 tasks.named('test') {

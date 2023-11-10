@@ -1,0 +1,5 @@
+package order.api.project.model.service;
+
+public class PaymentService {
+
+}

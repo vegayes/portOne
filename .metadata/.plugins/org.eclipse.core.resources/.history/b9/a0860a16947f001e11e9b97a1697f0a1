@@ -1,0 +1,12 @@
+package order.api.project.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+@RequestMapping("/member")
+public class Success {
+
+	goods_pay_success
+
+
+}
