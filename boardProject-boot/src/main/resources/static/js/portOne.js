@@ -10,6 +10,7 @@ function requestPay() {
             merchant_uid: "1234578" + new Date().getTime(),//주문번호 전달 ★
             name: "당근 10kg",		//상품 명★ 주문명 : 결제 테스트
             amount: 100,			//금액 ★
+            customer_uid : "CUSTOMER_UID", //customer_uid 파라메터가 있어야 빌링키 발급을 시도합니다.★★★
             buyer_email: "gildong@gmail.com", // ★
             buyer_name: "홍길동", // ★
             buyer_tel: "010-4242-4242", // ★
