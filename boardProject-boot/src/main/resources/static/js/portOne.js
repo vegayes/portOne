@@ -1,16 +1,22 @@
 // 결제 
-
 var IMP = window.IMP;
 IMP.init("imp82107782");
 
 function requestPay() {
     IMP.request_pay({
+
+        // 결제정보를 결제api 진행하면서 넣어야 하는거 아니야? 왜 미리 넣어?
+        // => 미리 넣는다고 했을 때 loginMember의 정보를 넣음.
+        
+
+
+
             pg: "html5_inicis",		//KG이니시스 pg파라미터 값
             pay_method: "card",		//결제 방법
             merchant_uid: "1234578" + new Date().getTime(),//주문번호 전달 ★
             name: "당근 10kg",		//상품 명★ 주문명 : 결제 테스트
             amount: 100,			//금액 ★
-            customer_uid : "CUSTOMER_UID", //customer_uid 파라메터가 있어야 빌링키 발급을 시도합니다.★★★
+            //customer_uid : "CUSTOMER_UID", //customer_uid 파라메터가 있어야 빌링키 발급을 시도합니다.★★★
             buyer_email: "gildong@gmail.com", // ★
             buyer_name: "홍길동", // ★
             buyer_tel: "010-4242-4242", // ★
@@ -19,7 +25,7 @@ function requestPay() {
         },
         function (rsp) {
               //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단함.
-           		 console.log("응답 개체:", rsp);
+           	  console.log("응답 개체:", rsp);
             if (rsp.success) {
                 // jQuery로 HTTP 요청
                 jQuery.ajax({
@@ -53,11 +59,7 @@ function requestPay() {
 	                msg += "카드 승인번호가 없습니다.";
 	            }
 	            console.log("msg:" + msg);
-                //pay_info(rsp);
-               
-               // data.impUid = rsp.imp_uid;
-               // data.merchant_uid = rsp.merchant_uid;
-               // paymentComplete(data);
+
                 alert("결제 성공");
                 
             } else {
@@ -69,86 +71,3 @@ function requestPay() {
 }
 
 
-
-
-// 결제 정보 전달
-function pay_info(rsp){
-      var form = document.createElement('form');
-      var objs;
- 
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_name');
-      objs.setAttribute('value', rsp.buyer_name);
-      form.appendChild(objs);
- 
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_phone');
-      objs.setAttribute('value', rsp.buyer_tel);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'member_email');
-      objs.setAttribute('value', rsp.buyer_email);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buy_addr');
-      objs.setAttribute('value', rsp.buyer_addr);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buy_product_name');
-      objs.setAttribute('value', rsp.name);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_buyid');
-      objs.setAttribute('value', rsp.imp_uid);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_merid');
-      objs.setAttribute('value', rsp.merchant_uid);
-      console.log("paid_amount:" + paid_amount);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'amount');
-      objs.setAttribute('value', rsp.paid_amount);
-      console.log("paid_amount:" + paid_amount);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_card_num');
-      objs.setAttribute('value', rsp.apply_num);
-      console.log("apply_num:" + apply_num);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_pay_ok');
-      objs.setAttribute('value', rsp.success);
-      console.log("success:" + success);
-      form.appendChild(objs);
-      
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'buyer_postcode');
-      objs.setAttribute('value', rsp.buyer_postcode);
-      console.log("buyer_postcode:" + buyer_postcode);
-      form.appendChild(objs);
- 
-      form.setAttribute('method', 'post');
-      form.setAttribute('th:action', "@{/goods_pay_success}");
-      document.body.appendChild(form);
-      form.submit();
-}
