@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class Success {
 
-	@PostMapping("/goods_pay_success")
+	@PostMapping("/goodsPay")
 	public String checkSuccess() {
 		
 		System.out.println("안녕");
